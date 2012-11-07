@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Hero
-	attr_accessor :name, :hp, :helmet, :breastplate, :trousers, :gloves, :boots
+	attr_accessor :name :hp, :helmet, :breastplate, :trousers, :gloves, :boots
 	def initialize( name, hp=100, helmet=0, breastplate=0, trousers=0, gloves=0, boots=0 )
 		@name = name
 		@hp = hp
