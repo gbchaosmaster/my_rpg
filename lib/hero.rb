@@ -67,7 +67,7 @@ attr_accessor :helm, :breast, :trouser, :glove, :boot, :weapon
 	end
 	
 	
-	=begin
+	
 	def equip(item)
 	if item
 		self.#{item.slot}=item
@@ -76,6 +76,7 @@ attr_accessor :helm, :breast, :trouser, :glove, :boot, :weapon
 	
 	end	
 	
+end
 end
 
 if __FILE__ == $0 then
@@ -101,7 +102,8 @@ class Item
 end
 
 #Current changes:  Added item class
-
+#added equip framework
+#heavily modified enemy class, need to apply changes to Hero class when finished
 
 #-------------------------------------------------------
 

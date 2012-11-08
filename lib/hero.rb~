@@ -101,7 +101,8 @@ class Item
 end
 
 #Current changes:  Added item class
-
+#added equip framework
+#heavily modified enemy class, need to apply changes to Hero class when finished
 
 #-------------------------------------------------------
 
