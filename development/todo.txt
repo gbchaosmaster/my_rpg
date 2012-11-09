@@ -1,0 +1,8 @@
+##To Do
+##
+## Create world/room structure
+## create player command structure
+##  most important commands atm >>[pickup/get, directions, drop, look,] equip, unequip etc
+## create fight sequence and timing
+## create OOC prompt
+## create in combat prompt with health percentages
