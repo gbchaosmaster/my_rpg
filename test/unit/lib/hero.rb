@@ -6,7 +6,7 @@ suite "Hero" do
   test "Hero.new" do
     hero = Hero.new("Alderan")
     assert_equal "Alderan", hero.name
-    hero.take_physical_damage(100)
+    hero.take_physical_damage(1000)
     assert_equal hero.alive?, false
   end
 end

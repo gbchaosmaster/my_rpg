@@ -1,20 +1,25 @@
 class Battle
-  def fight(attacker, defender)
-    while attacker.alive? && defender.alive?  
-      if attacker.alive?
-        fight_text(attacker.dam, attacker, defender)
+  def initialize( attacker, defender )
+  @attacker = attacker
+  @defender = defender
+  end
+  def fight
+    while @attacker.alive? && @defender.alive?  
+      if @attacker.alive?
+        @attacker.fight_text(@attacker.dam, @attacker, @defender)
       else
       
       end
-      if defender.alive?
-        fight_text(defender.dam, defender, attacker)
+      if @defender.alive?
+        @defender.fight_text(@defender.dam, @defender, @attacker)
       else
 
       end
     end 
-    if attacker.alive?
-      puts "#{defender.name.capitalize} has died." 
-    else puts "#{attacker.name.capitalize} has died."
+    if @attacker.alive?
+      puts "#{@defender.name.capitalize} has died." 
+    elsif @defender.alive? 
+      puts "#{@attacker.name.capitalize} has died."
     end
   end
 end

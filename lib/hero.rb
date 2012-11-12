@@ -42,7 +42,7 @@ class Hero
 	  block = self.block
 	  damage_taken = crit * damage
 		damage_taken = ( damage - armor_value - block ) 
-		if damage_taken >=0 
+		if damage_taken >0 
 		  @hp -= damage_taken 
 		  return damage_taken, crit, block
 		else
@@ -53,12 +53,14 @@ class Hero
 	def fight_text(damage, attacker, defender)
 	  fight_array=defender.take_physical_damage(damage)
 	  if fight_array[0] == 0 && fight_array[2] == 0
-	    puts "#{attacker.capitalize} doesn't even scratch #{defender.capitalize}!"
-	  elsif fight_array[0] == 0
-	    puts "#{defender.capitalize} blocks all damage!"
-	  elsif fight_array[1] > 1 && fight_array[0] > 0 && fight_array[2] > 0
-	    puts "#{attacker.capitalize} **CRITS** #{defender.capitalize} for #{fight_array[0]}(#{fight_array[2]} Blocked)"
-	  elsif fight_array[0] > 0 && fight_array[1] >1 && fight_array[0] > 0
+	    puts "#{attacker.name.capitalize} doesn't even scratch #{defender.name.capitalize}! #{fight_array}  "
+	  elsif fight_array[0] == 0 && fight_array[2] > 0
+	    puts "#{defender.name.capitalize} blocks all damage!(#{fight_array[2]} Blocked)"
+	  elsif fight_array[0] > 1 && fight_array[1] > 1 && fight_array[2] > 0
+	    puts "#{attacker.name.capitalize} **CRITS** #{defender.name.capitalize} for #{fight_array[0]}(#{fight_array[2]} Blocked)"
+ 
+	  elsif fight_array[0] > 0 
+	    puts "#{attacker.name.capitalize} hits #{defender.name.capitalize} for #{fight_array[0]}(#{fight_array[2]} Blocked)"	    
 	  end
 	end
 	
