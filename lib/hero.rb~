@@ -3,7 +3,7 @@ class Hero
   ##Hero info
   attr_reader   :name
   ##combat values
-	attr_accessor :hp, :dam, :crit_chance, :block_chance, :block_value
+	attr_accessor :hp, :dam, :crit_chance, :block_chance, :block_value, :crit_value
 	##Hero armor
 	attr_accessor :helmet, :breastplate, :trousers, :gloves, :boots
 	def initialize( name )
@@ -18,6 +18,7 @@ class Hero
 		@block_chance         = 5
 		@crit_chance          = 5
 		@crit_value           = 2
+		@block_value          = 7
 		end
 	
 	def block
