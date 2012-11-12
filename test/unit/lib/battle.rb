@@ -8,9 +8,9 @@ suite "Battle" do
     hero = Hero.new("Alderan")
     dragon = Hero.new("Dragon")
     hero.hp= 2000
-    dragon.block_chance=50
+    dragon.block_chance=30
     dragon.block_value=3
-    dragon.crit_chance=100
+    dragon.crit_chance=50
     dragon.crit_value=10
     dragon.hp = 10000
     battle = Battle.new(hero, dragon)

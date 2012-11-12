@@ -9,7 +9,7 @@ class Hero
 	def initialize( name )
 		@name                 = name
 		@hp                   = 100
-		@helmet               = 0
+		@helmet               = 10
 		@breastplate          = 0
 		@trousers             = 0
 		@gloves               = 0
@@ -31,38 +31,35 @@ class Hero
   
   def crit
     if rand(101) <= @crit_chance
-  	  return crit_value
+  	  return @crit_value
     else
       return 1
     end
   end
   
-	def take_physical_damage(damage)
-	  crit = self.crit
-	  block = self.block
-	  damage_taken = crit * damage
-		damage_taken = ( damage - armor_value - block ) 
-		if damage_taken >0 
-		  @hp -= damage_taken 
-		  return damage_taken, crit, block
+	def take_physical_damage(damage, attacker)
+	  critical = attacker.crit
+	  blocked = self.block
+	  damage_taken = critical * damage
+		damage_taken = ( damage_taken - blocked ) 		
+		if damage_taken - armor_value >=0 
+		  @hp -= damage_taken + armor_value
+		  return damage_taken, critical, blocked
 		else
-		  return 0, 1, 0
+		  return 0, critical, blocked
 		end
 	end
 	
 	def fight_text(damage, attacker, defender)
-	  fight_array=defender.take_physical_damage(damage)
+	  fight_array=defender.take_physical_damage(damage, attacker)
 	  if fight_array[0] == 0 && fight_array[2] == 0
-	    puts "#{attacker.name.capitalize} doesn't even scratch #{defender.name.capitalize}! #{fight_array}  "
+	    puts "\n#{attacker.name.capitalize} doesn't even scratch #{defender.name.capitalize}!"
 	  elsif fight_array[0] == 0 && fight_array[2] > 0
-	    puts "#{defender.name.capitalize} blocks all damage!(#{fight_array[2]} Blocked)"
-	  elsif fight_array[1] > 1 && fight_array[0] > 0 && fight_array[2] > 0
-	    puts "#{attacker.name.capitalize} **CRITS** #{defender.name.capitalize} for #{fight_array[0]}(#{fight_array[2]} Blocked)"
-
-	 
-	  
+	    puts "\n#{defender.name.capitalize} blocks all damage!"
+	  elsif fight_array[0] > 1 && fight_array[1] != 1
+	    puts "\n#{attacker.name.capitalize} **CRITS** #{defender.name.capitalize} for #{fight_array[0]}(#{fight_array[2]} Blocked)"
 	  elsif fight_array[0] > 0 
-	    puts "#{attacker.name.capitalize} hits #{defender.name.capitalize} for #{fight_array[0]}(#{fight_array[2]} Blocked)"	    
+	    puts "\n#{attacker.name.capitalize} hits #{defender.name.capitalize} for #{fight_array[0]}(#{fight_array[2]} Blocked)"	    
 	  end
 	end
 	

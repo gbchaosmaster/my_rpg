@@ -10,7 +10,7 @@ class Battle
       else
       
       end
-      if @defender.alive?
+      if @defender.alive? 
         @defender.fight_text(@defender.dam, @defender, @attacker)
       else
 
