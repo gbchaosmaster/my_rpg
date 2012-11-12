@@ -1,9 +1,10 @@
 # encoding: utf-8
 class Hero
   ##Hero info
-	attr_accessor :name, :hp
+  attr_reader   :name
+	attr_accessor :hp, :dam
 	##Hero armor
-	attr_accessor :helmet, :breastplate, :trousers, :gloves, :boots, :dam
+	attr_accessor :helmet, :breastplate, :trousers, :gloves, :boots
 	def initialize( name )
 		@name                 = name
 		@hp                   = 100
@@ -14,7 +15,7 @@ class Hero
 		@boots                = 0
 		@dam                  = 5
 		end
-	def got_hit(damage)	
+	def take_physical_damage(damage)	
 		damage_taken = ( damage - armor_value ) 
 		if damage_taken >=0 
 		  @hp -= damage_taken 

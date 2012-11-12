@@ -12,8 +12,14 @@ attr_accessor :helm, :breast, :trouser, :glove, :boot, :weapon
 		@bootsav = boots
 		@weaponav = weapon
 	end
-	def hit(damage, target)
-		target.hp -= damage-armor_value
+	def take_physical_damage(damage)	
+		damage_taken = ( damage - armor_value ) 
+		if damage_taken >=0 
+		  @hp -= damage_taken 
+		  return damage_taken
+		else
+		    return 0
+		end
 	end
 	
 	def hitpoints
